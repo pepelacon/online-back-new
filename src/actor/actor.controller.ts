@@ -23,8 +23,8 @@ export class ActorController {
 	constructor(private readonly actorService: ActorService) {}
 
 	@Get()
-	async getAll(@Query('searchTerm') searchTerm?: string) {
-		return this.actorService.getAll(searchTerm)
+	async getAll() {
+		return this.actorService.getAll()
 	}
 
 	@Get('by-slug/:slug')
