@@ -9,12 +9,15 @@ import {
 	Param,
 	Delete,
 	Query,
+	Post,
 } from '@nestjs/common'
 import { UserService } from './user.service'
 import { Auth } from 'src/auth/decorators/auth.decorator'
 import { User } from './decorators/user.decorator'
 import { UpdateUserDto } from './dto/update-user.dto'
 import { IdValidationPipe } from 'src/pipes/id.validation.pipe'
+import { Types } from 'mongoose'
+import { UserModel } from './user.model'
 
 @Controller('users')
 export class UserController {
@@ -32,6 +35,22 @@ export class UserController {
 	@Auth()
 	async updateProfile(@User('_id') _id: string, @Body() dto: UpdateUserDto) {
 		return this.userService.updateProfile(_id, dto)
+	}
+
+	@Get('profile/favorites')
+	@Auth()
+	async getFavorites(@User('_id') _id: string) {
+		return this.userService.getFavoriteMovies(_id)
+	}
+
+	@Put('profile/favorites')
+	@HttpCode(200)
+	@Auth()
+	async toggleFavorite(
+		@Body('movieId', IdValidationPipe) movieId: Types.ObjectId,
+		@User() user: UserModel
+	) {
+		return this.userService.toggleFavorite(movieId, user)
 	}
 
 	@Get('count')
