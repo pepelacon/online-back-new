@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common'
 import { ModelType, DocumentType } from '@typegoose/typegoose/lib/types'
 import { Types } from 'mongoose'
 import { InjectModel } from 'nestjs-typegoose'
-// import { TelegramService } from 'src/telegram/telegram.service'
+import { TelegramService } from 'src/telegram/telegram.service'
 
 import { UpdateMovieDto } from './update-movie.dto'
 import { MovieModel } from './movie.model'
@@ -10,7 +10,8 @@ import { MovieModel } from './movie.model'
 @Injectable()
 export class MovieService {
 	constructor(
-		@InjectModel(MovieModel) private readonly movieModel: ModelType<MovieModel>
+		@InjectModel(MovieModel) private readonly movieModel: ModelType<MovieModel>,
+		private readonly telegramService: TelegramService
 	) {}
 
 	async getAll(searchTerm?: string) {
@@ -73,10 +74,10 @@ export class MovieService {
 	}
 
 	async update(id: string, dto: UpdateMovieDto) {
-		// if (!dto.isSendTelegram) {
-		// 	await this.sendNotifications(dto)
-		// 	dto.isSendTelegram = true
-		// }
+		if (!dto.isSendTelegram) {
+			await this.sendNotifications(dto)
+			dto.isSendTelegram = true
+		}
 
 		return this.movieModel.findByIdAndUpdate(id, dto, { new: true }).exec()
 	}
@@ -101,23 +102,25 @@ export class MovieService {
 			.exec()
 	}
 
-	// async sendNotifications(dto: UpdateMovieDto) {
-	// 	if (process.env.NODE_ENV !== 'development')
-	// 		await this.telegramService.sendPhoto(dto.poster)
+	async sendNotifications(dto: UpdateMovieDto) {
+		// if (process.env.NODE_ENV !== 'development')
+		// 	await this.telegramService.sendPhoto(dto.poster)
+		await this.telegramService.sendPhoto(
+			'https://www.google.com/aclk?sa=L&ai=DChcSEwiVpcnS7-KDAxVD7uMHHQvuCKMYABABGgJ5bQ&ase=2&gclid=CjwKCAiA75itBhA6EiwAkho9e5udGcIR3f7n7jP1jQdRZsGgZd3KbbiVfsEdlsZhxfbm-dKSLcF6aBoCPeoQAvD_BwE&sig=AOD64_0dJvoXVn9AFTOhspdE3Czr7qg95Q&ctype=5&nis=6&adurl&ved=2ahUKEwjU1rHS7-KDAxW0kokEHYfcCJIQvhd6BAgBEHw'
+		)
+		const msg = `<b>${dto.title}</b>\n\n`
 
-	// 	const msg = `<b>${dto.title}</b>\n\n`
-
-	// 	await this.telegramService.sendMessage(msg, {
-	// 		reply_markup: {
-	// 			inline_keyboard: [
-	// 				[
-	// 					{
-	// 						url: 'https://okko.tv/movie/free-guy',
-	// 						text: '🍿 Go to watch',
-	// 					},
-	// 				],
-	// 			],
-	// 		},
-	// 	})
-	// }
+		await this.telegramService.sendMessage(msg, {
+			reply_markup: {
+				inline_keyboard: [
+					[
+						{
+							url: 'https://okko.tv/movie/free-guy',
+							text: '🍿 Go to watch',
+						},
+					],
+				],
+			},
+		})
+	}
 }

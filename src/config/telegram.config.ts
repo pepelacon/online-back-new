@@ -1,7 +1,7 @@
-import { ITelegramOptions } from 'src/telegram/telegram.interface'
+import { Telegram } from 'src/telegram/telegram.interface'
 
-export const getTelegramConfig = (): ITelegramOptions => ({
-	// https://api.telegram.org/bot5070807616:AAGHWhiD9qTMz68gz6yccEXGRtY8x0ohOb0/getUpdates - for get chatId
-	chatId: '',
-	token: '',
+export const getTelegramConfig = (): Telegram => ({
+	// https://api.telegram.org/bot6449498541:AAFMkrC3bHtPbqtteNh6HkNu7H_eWq2-G8I/getUpdates
+	chatId: '390856533',
+	token: 'AAFMkrC3bHtPbqtteNh6HkNu7H_eWq2-G8I',
 })
