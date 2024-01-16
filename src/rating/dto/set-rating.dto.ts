@@ -3,7 +3,7 @@ import { IsObjectId } from 'class-validator-mongo-object-id'
 import { Types } from 'mongoose'
 
 export class SetRatingDto {
-	@IsObjectId()
+	@IsObjectId({ message: 'MovieId is invalid' })
 	movieId: Types.ObjectId
 
 	@IsNumber()
