@@ -42,8 +42,8 @@ export class MovieController {
 	}
 
 	@Get()
-	async getAll() {
-		return this.movieService.getAll()
+	async getAll(@Query('searchTerm') searchTerm?: string) {
+		return this.movieService.getAll(searchTerm)
 	}
 
 	@Get('/most-popular')
@@ -51,7 +51,7 @@ export class MovieController {
 		return this.movieService.getMostPopular()
 	}
 
-	@Put('/update-count-opened')
+	@Post('/update-count-opened')
 	@HttpCode(200)
 	async updateCountOpened(@Body('slug') slug: string) {
 		return this.movieService.updateCountOpened(slug)
