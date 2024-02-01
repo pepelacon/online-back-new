@@ -25,7 +25,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "start:prod": "node dist/main.js",
     "heroku-postbuild": "ng build --prod",
-    "heroku-prebuild": "yarn install && ng config -g cli.packageManager yarn"
+    "heroku-prebuild": "yarn install && yarn add back && ng config -g cli.packageManager yarn"
   },
   "dependencies": {
     "@nestjs/common": "^9.0.0",
