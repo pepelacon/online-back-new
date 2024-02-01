@@ -7,9 +7,11 @@ import {
 	UseInterceptors,
 } from '@nestjs/common'
 import { FileInterceptor } from '@nestjs/platform-express'
-import { Auth } from 'src/auth/decorators/Auth.decorator'
+// import { Auth } from 'src/auth/decorators/Auth.decorator'
+
 import { FileResponse } from './dto/file.response'
 import { FilesService } from './file.service'
+import { Auth } from '../../src/auth/decorators/auth.decorator'
 
 @Controller('files')
 export class FilesController {
