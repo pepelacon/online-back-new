@@ -49,6 +49,7 @@
     "telegraf": "^4.15.3"
   },
   "devDependencies": {
+    "@angular/cli": "^17.1.2",
     "@nestjs/cli": "^9.0.0",
     "@nestjs/schematics": "^9.0.0",
     "@nestjs/testing": "^9.0.0",
