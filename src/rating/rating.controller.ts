@@ -10,13 +10,13 @@ import {
 } from '@nestjs/common'
 
 import { Types } from 'mongoose'
-// import { Auth } from '../../src/auth/decorators/Auth.decorator'
+import { Auth } from 'src/auth/decorators/auth.decorator'
 
 import { IdValidationPipe } from 'src/pipes/id.validation.pipe'
 import { User } from 'src/user/decorators/user.decorator'
 import { SetRatingDto } from './dto/set-rating.dto'
 import { RatingService } from './rating.service'
-import { Auth } from 'cinema-back/src/auth/decorators/auth.decorator'
+// import { Auth } from 'cinema-back/src/auth/decorators/auth.decorator'
 
 @Controller('ratings')
 export class RatingController {
