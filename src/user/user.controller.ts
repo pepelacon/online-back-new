@@ -12,7 +12,7 @@ import {
 	Post,
 } from '@nestjs/common'
 import { UserService } from './user.service'
-import { Auth } from 'src/auth/decorators/auth.decorator'
+import { Auth } from 'src/auth/decorators/Auth.decorator'
 import { User } from './decorators/user.decorator'
 import { UpdateUserDto } from './dto/update-user.dto'
 import { IdValidationPipe } from 'src/pipes/id.validation.pipe'
