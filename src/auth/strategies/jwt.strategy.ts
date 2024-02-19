@@ -12,6 +12,8 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 		private readonly configService: ConfigService,
 		@InjectModel(UserModel) private readonly UserModel: ModelType<UserModel>
 	) {
+		const jwtSecret = configService.get('JWT_SECRET')
+		console.log('JWT_SECRET:', jwtSecret)
 		super({
 			jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
 			ignoreExpiration: true,
