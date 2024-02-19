@@ -14,10 +14,10 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ActorController = void 0;
 const common_1 = require("@nestjs/common");
-const auth_decorator_1 = require("../auth/decorators/auth.decorator");
 const id_validation_pipe_1 = require("../pipes/id.validation.pipe");
 const actor_service_1 = require("./actor.service");
 const actor_dto_1 = require("./actor.dto");
+const auth_decorator_1 = require("../../cinema-back/src/auth/decorators/auth.decorator");
 let ActorController = class ActorController {
     constructor(actorService) {
         this.actorService = actorService;

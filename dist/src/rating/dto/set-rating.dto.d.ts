@@ -1,3 +1,4 @@
+/// <reference types="mongoose/types/types" />
 /// <reference types="mongoose/types/aggregate" />
 /// <reference types="mongoose/types/callback" />
 /// <reference types="mongoose/types/collection" />
@@ -17,11 +18,9 @@
 /// <reference types="mongoose/types/schemaoptions" />
 /// <reference types="mongoose/types/schematypes" />
 /// <reference types="mongoose/types/session" />
-/// <reference types="mongoose/types/types" />
 /// <reference types="mongoose/types/utility" />
 /// <reference types="mongoose/types/validation" />
 /// <reference types="mongoose/types/virtuals" />
-/// <reference types="mongoose/types/inferschematype" />
 import { Types } from 'mongoose';
 export declare class SetRatingDto {
     movieId: Types.ObjectId;

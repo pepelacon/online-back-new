@@ -1,9 +1,9 @@
+/// <reference types="mongoose/types/document" />
 /// <reference types="mongoose/types/aggregate" />
 /// <reference types="mongoose/types/callback" />
 /// <reference types="mongoose/types/collection" />
 /// <reference types="mongoose/types/connection" />
 /// <reference types="mongoose/types/cursor" />
-/// <reference types="mongoose/types/document" />
 /// <reference types="mongoose/types/error" />
 /// <reference types="mongoose/types/expressions" />
 /// <reference types="mongoose/types/helpers" />
@@ -22,7 +22,7 @@
 /// <reference types="mongoose/types/validation" />
 /// <reference types="mongoose/types/virtuals" />
 /// <reference types="mongoose" />
-/// <reference types="mongoose/types/inferschematype" />
+/// <reference types="mongoose" />
 import { ModelType } from '@typegoose/typegoose/lib/types';
 import { ActorModel } from './actor.model';
 import { ActorDto } from './actor.dto';
