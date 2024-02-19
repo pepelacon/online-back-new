@@ -11,11 +11,13 @@ import {
 	UsePipes,
 	ValidationPipe,
 } from '@nestjs/common'
-import { Auth } from 'src/auth/decorators/Auth.decorator'
+// import { Auth } from 'src/auth/decorators/Auth.decorator'
+
 import { IdValidationPipe } from 'src/pipes/id.validation.pipe'
 import { ActorService } from './actor.service'
 
 import { ActorDto } from './actor.dto'
+import { Auth } from 'cinema-back/src/auth/decorators/auth.decorator'
 // import { Auth } from '../../src/auth/decorators/Auth.decorator'
 
 @Controller('actors')
