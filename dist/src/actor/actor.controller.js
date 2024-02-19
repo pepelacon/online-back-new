@@ -14,10 +14,10 @@ var __param = (this && this.__param) || function (paramIndex, decorator) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.ActorController = void 0;
 const common_1 = require("@nestjs/common");
+const Auth_decorator_1 = require("../auth/decorators/Auth.decorator");
 const id_validation_pipe_1 = require("../pipes/id.validation.pipe");
 const actor_service_1 = require("./actor.service");
 const actor_dto_1 = require("./actor.dto");
-const auth_decorator_1 = require("../../cinema-back/src/auth/decorators/auth.decorator");
 let ActorController = class ActorController {
     constructor(actorService) {
         this.actorService = actorService;
@@ -64,14 +64,14 @@ __decorate([
     (0, common_1.UsePipes)(new common_1.ValidationPipe()),
     (0, common_1.Post)(),
     (0, common_1.HttpCode)(200),
-    (0, auth_decorator_1.Auth)('admin'),
+    (0, Auth_decorator_1.Auth)('admin'),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], ActorController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)(':id'),
-    (0, auth_decorator_1.Auth)('admin'),
+    (0, Auth_decorator_1.Auth)('admin'),
     __param(0, (0, common_1.Param)('id', id_validation_pipe_1.IdValidationPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -81,7 +81,7 @@ __decorate([
     (0, common_1.UsePipes)(new common_1.ValidationPipe()),
     (0, common_1.Put)(':id'),
     (0, common_1.HttpCode)(200),
-    (0, auth_decorator_1.Auth)('admin'),
+    (0, Auth_decorator_1.Auth)('admin'),
     __param(0, (0, common_1.Param)('id', id_validation_pipe_1.IdValidationPipe)),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
@@ -90,7 +90,7 @@ __decorate([
 ], ActorController.prototype, "update", null);
 __decorate([
     (0, common_1.Delete)(':id'),
-    (0, auth_decorator_1.Auth)('admin'),
+    (0, Auth_decorator_1.Auth)('admin'),
     __param(0, (0, common_1.Param)('id', id_validation_pipe_1.IdValidationPipe)),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
