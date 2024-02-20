@@ -5,8 +5,11 @@ const app_module_1 = require("./app.module");
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule);
     app.setGlobalPrefix('api');
-    app
-        .enableCors();
+    app.enableCors({
+        origin: 'https://front-next-fixjw0lm2-pepelacon.vercel.app',
+        methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+        credentials: true,
+    });
     await app.listen(process.env.PORT || 4200);
 }
 bootstrap();
